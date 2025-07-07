@@ -1,16 +1,16 @@
-import { FaJava } from "react-icons/fa6";
-import { TbFileTypeSql } from "react-icons/tb";
+import { FaJava as JAVA } from "react-icons/fa6";
+import { TbFileTypeSql as SQL } from "react-icons/tb";
 
 import { IoLogoHtml5 as HTML} from "react-icons/io5";
-import { FaCss3 } from "react-icons/fa6";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { IoLogoJavascript } from "react-icons/io5";
-import { RiReactjsLine } from "react-icons/ri";
-import { BiLogoMongodb } from "react-icons/bi";
-import { FaNode } from "react-icons/fa6";
-import { SiExpress } from "react-icons/si";
-import { FaGithubSquare } from "react-icons/fa";
-import { SiPostman } from "react-icons/si";
+import { FaCss3 as CSS } from "react-icons/fa6";
+import { RiTailwindCssFill as CSS2 } from "react-icons/ri";
+import { IoLogoJavascript as JAVASCRIPT } from "react-icons/io5";
+import { RiReactjsLine as REACT } from "react-icons/ri";
+import { BiLogoMongodb as MONGO } from "react-icons/bi";
+import { FaNode as NODE } from "react-icons/fa6";
+import { SiExpress as EXPRESS } from "react-icons/si";
+import { FaGithubSquare as GIT } from "react-icons/fa";
+import { SiPostman as POSTMAN } from "react-icons/si";
 
 
 
@@ -78,69 +78,90 @@ export default function App() {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
+      title: "EatExpress",
       description:
-        "Full-featured e-commerce platform with payment integration, inventory management, and admin dashboard.",
-      image: "Pokemon.png",
+        "Developed a dynamic e-commerce web app with firebase. Full-featured platform with Razorpay payment integration .",
+      image: "/eatExpress.png",
+      tech: ["TailwindCSS", "ReactJS", "Redux Tool Kit", "FireBase", "Razorpay"],
+      category: "fullstack",
+      github: "https://github.com/Channu-22/food_Delivery_Website",
+      demo: "https://food-delivery-website-channu22.vercel.app/",
+    },
+    {
+      id: 2,
+      title: "pokemonUniverse",
+      description:
+        "Built PokémonUniverse, a responsive web app using HTML, CSS, JS with PokéAPI integration to fetch and display dynamic nested Pokémon data.",
+      image: "/Pokemon.png",
       tech: ["HTML", "CSS", "JavaScript"],
       category: "fullstack",
       github: "https://github.com/Channu-22/PokemonUniverse_Project",
       demo: "https://pokemon-universe-project-channu2002.vercel.app/",
     },
     {
-      id: 2,
-      title: "Task Management App",
-      description:
-        "Collaborative task management application with real-time updates and team collaboration features.",
-      image: "/placeholder.svg?height=300&width=500",
-      tech: ["Vue.js", "Express", "PostgreSQL", "Socket.io"],
-      category: "fullstack",
-      github: "#",
-      demo: "#",
-    },
-    {
       id: 3,
-      title: "Social Media Dashboard",
+      title: "LeaderBoard",
       description:
-        "Analytics dashboard for social media management with data visualization and reporting.",
-      image: "/placeholder.svg?height=300&width=500",
-      tech: ["React", "Python", "FastAPI", "Chart.js"],
-      category: "frontend",
-      github: "#",
-      demo: "#",
+        "Developed a Leaderboard app with React.js, featuring real-time score updates, user ranking, and a responsive, interactive interface.",
+      image: "/leaderBoard.png",
+      tech: ["React"],
+      category: "fullstack",
+      github: "https://github.com/Channu-22/leaderBoard_React",
+      demo: "https://leader-board-react-channu22.vercel.app/",
     },
     {
       id: 4,
-      title: "Real-time Chat App",
+      title: "emojiList",
       description:
-        "Modern chat application with real-time messaging, file sharing, and group conversations.",
-      image: "/placeholder.svg?height=300&width=500",
-      tech: ["React", "WebSocket", "Firebase", "Material-UI"],
-      category: "fullstack",
-      github: "#",
-      demo: "#",
+        "Created EmojiList, a fun web app using HTML, CSS, and JavaScript to search and display emojis with real-time filtering and meaning display.",
+      image: "/emoji.png",
+      tech: ["HTML", "CSS", "JavaScript"],
+      category: "frontend",
+      github: "https://github.com/Channu-22/emojiList",
+      demo: "https://emojilist-peach.vercel.app/",
     },
     {
       id: 5,
-      title: "AI Analytics Tool",
+      title: "sinnurRestaurant",
       description:
-        "AI-powered analytics platform for business intelligence and predictive analytics.",
-      image: "/placeholder.svg?height=300&width=500",
-      tech: ["React", "Python", "TensorFlow", "D3.js"],
-      category: "ai",
-      github: "#",
-      demo: "#",
+        "Designed a fully responsive restaurant website using Tailwind CSS, featuring hero section, chef showcase, styled menu, smooth navigation, and custom transitions.",
+      image: "sinnur.png",
+      tech: ["HTML","tailwindCSS"],
+      category: "fullstack",
+      github: "https://github.com/Channu-22/sinnurRestaurant",
+      demo: "https://sinnur-restaurant.vercel.app/",
     },
     {
       id: 6,
-      title: "Mobile Banking App",
+      title: "TodoList",
       description:
-        "Secure mobile banking application with biometric authentication and transaction management.",
-      image: "/placeholder.svg?height=300&width=500",
-      tech: ["React Native", "Firebase", "Node.js", "JWT"],
+        "Built a Task Manager with dynamic UI using JavaScript, featuring add, edit, delete functionality and smart button state handling.",
+      image: "/todoList.png",
+      tech: ["React",],
+      category: "ai",
+      github: "https://github.com/Channu-22/simpleTodoList_projectInReact",
+      demo: "https://simple-todo-list-project-in-react-c.vercel.app/",
+    },
+    {
+      id: 7,
+      title: "amazon webScrapping",
+      description:
+        "Web scraped Amazon using Node.js to extract product data (brand, title, image, rating, price) and converted it into JSON and XLSX formats for analysis.",
+      tech: ["NodeJS"],
       category: "mobile",
-      github: "#",
+      github: "https://github.com/Channu-22/amazon_webScrapping",
       demo: "#",
+    },
+      {
+      id: 6,
+      title: "myFirstProject",
+      description:
+        "Created a responsive multi-section layout using HTML and CSS featuring a navigation bar and content sections about Shivaji Maharaj, a traditional Indian woman, and the Vitthal Temple, with text and images arranged in a clean, visually appealing design.",
+      image: "/first.png",
+      tech: ["HTML","CSS"],
+      category: "ai",
+      github: "https://github.com/Channu-22/simpleLayout1",
+      demo: "https://simple-layout1-channu22.vercel.app/",
     },
   ];
   const [projectFilter, setProjectFilter] = useState("all");
@@ -268,7 +289,7 @@ const text = "Chanabasappa";
             <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-cyan-400 to-purple-400 p-1">
               <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center">
                 <img
-                  src="/chanvir.png?height=120&width=120"
+                  src="/channu2.jpg?height=120&width=120"
                   alt="Profile"
                   className="w-28 h-28 rounded-full object-cover"
                 />
@@ -319,7 +340,9 @@ const text = "Chanabasappa";
               View Projects
             </button>
             <a
-              href=""
+              href="/Channu_sinnur New Resume.pdf"
+                download="Chanabasappa_Resume.pdf"
+
               className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 bg-transparent" 
             >
               <Download className="mr-2 h-4 w-4" />
@@ -387,9 +410,9 @@ const text = "Chanabasappa";
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-xl" />
                 <img
-                  src="/chanvir.png?height=400&width=400"
+                  src="/channu1.jpg?height=400&width=400"
                   alt="About Me"
-                  className="relative rounded-2xl w-full h-96 object-cover border border-white/10"
+                  className="relative rounded-2xl w-full h-[500px] object-cover border border-white/10"
                 />
               </div>
             </motion.div>
@@ -401,27 +424,24 @@ const text = "Chanabasappa";
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <p className="text-lg text-gray-300 leading-relaxed">
-                I'm a passionate fullstack developer with over 5 years of
-                experience in creating innovative web applications and digital
-                solutions. My journey in tech started with a curiosity for
-                problem-solving and has evolved into a deep love for crafting
-                exceptional user experiences.
-              </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
+               I am fluent in programming languages like Java and SQL, with a strong interest in full-stack web development.
+               My passion lies in building modern web technologies and real-world applications that solve real problems.
 
-              <p className="text-lg text-gray-300 leading-relaxed">
-                I specialize in modern JavaScript frameworks, cloud
-                technologies, and scalable architecture design. When I'm not
-                coding, you'll find me exploring new technologies, contributing
-                to open-source projects, or mentoring aspiring developers.
-              </p>
+               On the frontend, I work with React.js to create interactive and responsive user interfaces.
+               On the backend, I build scalable APIs and server-side applications using Node.js, Express.js, and MongoDB.
+
+               I love turning ideas into working products and continuously strive to sharpen my skills in both frontend and backend development.
+           </p>
+
+              
 
               <div className="grid grid-cols-2 gap-6 mt-8">
                 {[
                   { label: "Years Experience", value: "0" },
-                  { label: "Projects Completed", value: "22+" },
+                  { label: "Projects Completed", value: "30+" },
                   
-                  { label: "Code Commits", value: "180+" },
+                  { label: "Code Commits", value: "200+" },
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -469,13 +489,18 @@ const text = "Chanabasappa";
   viewport={{ once: true }}
 >
   {[
-    { name: "React", icon: Code, colSpan: 2, rowSpan: 2 },
+    { name: "Java", icon: JAVA, colSpan: 2, rowSpan: 2 },
+    { name: "SQL", icon: SQL, colSpan: 2, rowSpan: 2 },
     { name: "HTML", icon: HTML, colSpan: 1, rowSpan: 1 },
-    { name: "Node.js", icon: Server, colSpan: 1, rowSpan: 1 },
-    { name: "Database", icon: Database, colSpan: 2, rowSpan: 1 },
-    { name: "Mobile", icon: Smartphone, colSpan: 1, rowSpan: 1 },
-    { name: "API", icon: Server, colSpan: 1, rowSpan: 2 },
-    { name: "Cloud", icon: Database, colSpan: 2, rowSpan: 1 },
+    { name: "CSS", icon: CSS, colSpan: 2, rowSpan: 2 },
+    { name: "Tailwind CSS", icon:CSS2, colSpan: 2, rowSpan: 1 },
+    { name: "JavaScript", icon: JAVASCRIPT, colSpan: 1, rowSpan: 1 },
+    { name: "React", icon: REACT, colSpan: 2, rowSpan: 1 },
+    { name: "Node", icon: NODE, colSpan: 2, rowSpan: 1 },
+    { name: "Express", icon: EXPRESS, colSpan: 2, rowSpan: 1 },
+    { name: "MongoDB", icon: MONGO, colSpan: 2, rowSpan: 1 },
+    { name: "Github", icon: GIT, colSpan: 2, rowSpan: 1 },
+    { name: "Postman", icon: POSTMAN, colSpan: 2, rowSpan: 1 },
   ].map((tech, index) => (
     <motion.div
       key={tech.name}
@@ -488,7 +513,7 @@ const text = "Chanabasappa";
       viewport={{ once: true }}
     >
       <tech.icon className="h-10 w-10 text-cyan-400 group-hover:text-purple-400 transition-colors mb-2" />
-      <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+      <span className="text-[20px] text-gray-300 group-hover:text-white transition-colors">
         {tech.name}
       </span>
     </motion.div>
@@ -536,7 +561,7 @@ const text = "Chanabasappa";
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex gap-2">
-                        <a href="https://pokemon-universe-project-channu2002.vercel.app/"
+                        <a href={project.demo}
                           size="sm"
                           className="bg-cyan-500 hover:bg-cyan-600 py-1.5 px-4 rounded-2xl"
                         >
@@ -750,14 +775,7 @@ const text = "Chanabasappa";
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-white/10 relative z-10">
-        <div className="container mx-auto text-center">
-          <p className="text-gray-400">
-            © 2024 Alex Johnson. Built with Next.js and Tailwind CSS.
-          </p>
-        </div>
-      </footer>
+   
 
       {/* Back to Top Button */}
       <AnimatePresence>
