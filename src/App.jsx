@@ -563,19 +563,22 @@ const text = "Chanabasappa";
                       <div className="flex gap-2">
                         <a href={project.demo}
                           size="sm"
+                          
+                          target= "_blank"
                           className="bg-cyan-500 hover:bg-cyan-600 py-1.5 px-4 rounded-2xl"
                         >
                           <ExternalLink className="h-4 w-4 mr-1" />
                           Demo
                         </a>
                         <a
-                        href="https://github.com/Channu-22/PokemonUniverse_Project"
+                        href={project.github}
                           size="sm"
+                          target= "_blank"
                           variant="outline"
                          className="bg-cyan-500 hover:bg-cyan-600 py-1.5 px-4 rounded-2xl"
                         >
                           <Github className="h-4 w-4 mr-1" />
-                          Code
+                          Git
                         </a>
                       </div>
                     </div>
