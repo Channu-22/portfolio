@@ -340,7 +340,7 @@ const text = "Chanabasappa";
               View Projects
             </button>
             <a
-              href="/Channu_sinnur New Resume.pdf"
+              href="/ChannuSinnur_B.tech.pdf"
                 download="Chanabasappa_Resume.pdf"
 
               className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 bg-transparent" 
