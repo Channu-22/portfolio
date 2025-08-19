@@ -84,11 +84,22 @@ export default function App() {
       image: "/ecommerce.png",
       tech: ["TailwindCSS", "ReactJS",  "FireBase",],
       category: "fullstack",
-      github: "https://github.com/Channu-22/portfolio",
-      demo: "https://ecommerce22-channu-22.vercel.app/",
+      github: "https://github.com/Channu-22/ecommerce22/",
+      demo: "https://ecommerce-channu22.vercel.app",
+    },
+     {
+      id: 2,
+      title: "Movix",
+      description:
+        "Developed a dynamic Movix web app using React, Redux Toolkit, and Firebase. Full-featured platform with secure sign up/sign in and real-time movies from TMDB API.",
+      image: "/Movix.png",
+      tech: ["TailwindCSS", "ReactJS","ReduxToolKit","FireBase",],
+      category: "fullstack",
+      github: "https://github.com/Channu-22/Movies_Project_22",
+      demo: "https://movies-project-channu-22.vercel.app/",
     },
     {
-      id: 2,
+      id: 3,
       title: "pokemonUniverse",
       description:
         "Built PokémonUniverse, a responsive web app using HTML, CSS, JS with PokéAPI integration to fetch and display dynamic nested Pokémon data.",
@@ -99,7 +110,7 @@ export default function App() {
       demo: "https://pokemon-universe-project-channu2002.vercel.app/",
     },
     {
-      id: 3,
+      id: 4,
       title: "LeaderBoard",
       description:
         "Developed a Leaderboard app with React.js, featuring real-time score updates, user ranking, and a responsive, interactive interface.",
@@ -110,7 +121,7 @@ export default function App() {
       demo: "https://leader-board-react-channu22.vercel.app/",
     },
     {
-      id: 4,
+      id: 5,
       title: "emojiList",
       description:
         "Created EmojiList, a fun web app using HTML, CSS, and JavaScript to search and display emojis with real-time filtering and meaning display.",
@@ -121,7 +132,7 @@ export default function App() {
       demo: "https://emojilist-peach.vercel.app/",
     },
     {
-      id: 5,
+      id: 6,
       title: "sinnurRestaurant",
       description:
         "Designed a fully responsive restaurant website using Tailwind CSS, featuring hero section, chef showcase, styled menu, smooth navigation, and custom transitions.",
@@ -132,7 +143,7 @@ export default function App() {
       demo: "https://sinnur-restaurant.vercel.app/",
     },
     {
-      id: 6,
+      id: 7,
       title: "TodoList",
       description:
         "Built a Task Manager with dynamic UI using JavaScript, featuring add, edit, delete functionality and smart button state handling.",
@@ -143,7 +154,7 @@ export default function App() {
       demo: "https://simple-todo-list-project-in-react-c.vercel.app/",
     },
     {
-      id: 7,
+      id: 8,
       title: "amazon webScrapping",
       description:
         "Web scraped Amazon using Node.js to extract product data (brand, title, image, rating, price) and converted it into JSON and XLSX formats for analysis.",
@@ -153,7 +164,7 @@ export default function App() {
       demo: "#",
     },
       {
-      id: 6,
+      id: 9,
       title: "myFirstProject",
       description:
         "Created a responsive multi-section layout using HTML and CSS featuring a navigation bar and content sections about Shivaji Maharaj, a traditional Indian woman, and the Vitthal Temple, with text and images arranged in a clean, visually appealing design.",
@@ -441,7 +452,7 @@ const text = "Chanabasappa";
                   { label: "Years Experience", value: "0" },
                   { label: "Projects Completed", value: "30+" },
                   
-                  { label: "Code Commits", value: "200+" },
+                  { label: "Code Commits", value: "250+" },
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
