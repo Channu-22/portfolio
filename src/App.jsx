@@ -127,7 +127,7 @@ export default function App() {
     },
     {
       id: 2,
-      title: "Movix",
+      title: "Movies",
       description:
         "Developed a dynamic Movix web app using React, Redux Toolkit, and Firebase. Full-featured platform with secure sign up/sign in and real-time movies from TMDB API.",
       image: "/Movix.png",
