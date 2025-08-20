@@ -1,7 +1,6 @@
 import { FaJava as JAVA } from "react-icons/fa6";
 import { TbFileTypeSql as SQL } from "react-icons/tb";
-
-import { IoLogoHtml5 as HTML} from "react-icons/io5";
+import { IoLogoHtml5 as HTML } from "react-icons/io5";
 import { FaCss3 as CSS } from "react-icons/fa6";
 import { RiTailwindCssFill as CSS2 } from "react-icons/ri";
 import { IoLogoJavascript as JAVASCRIPT } from "react-icons/io5";
@@ -11,10 +10,6 @@ import { FaNode as NODE } from "react-icons/fa6";
 import { SiExpress as EXPRESS } from "react-icons/si";
 import { FaGithubSquare as GIT } from "react-icons/fa";
 import { SiPostman as POSTMAN } from "react-icons/si";
-
-
-
-
 import {
   motion,
   useScroll,
@@ -22,6 +17,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import {
   Menu,
   X,
@@ -44,9 +40,21 @@ import {
 export default function App() {
   const { scrollY } = useScroll();
   const headerOpacity = useTransform(scrollY, [0, 100], [0.9, 0.95]);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection,setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("home");
+  const [typedText] = useState("");
+  const heroY = useTransform(scrollY, [0, 500], [0, -150]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const [showBackToTop] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -55,10 +63,40 @@ export default function App() {
     }
     setIsMenuOpen(false);
   };
-  const [typedText] = useState("");
-  const heroY = useTransform(scrollY, [0, 500], [0, -150]);
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
-  const [showBackToTop] = useState(false);
+
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch("https://formspree.io/f/xkgzzzbz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitMessage(
+          "Message sent successfully! We'll get back to you soon."
+        );
+        reset();
+      } else {
+        setSubmitMessage("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      setSubmitMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitMessage(""), 5000);
+    }
+  };
+
   const frontendSkills = [
     { name: "React", level: 95 },
     { name: "Vue.js", level: 88 },
@@ -82,18 +120,18 @@ export default function App() {
       description:
         "Developed a dynamic e-commerce web app with firebase. Full-featured platform with signUp and signIn method.",
       image: "/ecommerce.png",
-      tech: ["TailwindCSS", "ReactJS",  "FireBase",],
+      tech: ["TailwindCSS", "ReactJS", "FireBase"],
       category: "fullstack",
       github: "https://github.com/Channu-22/ecommerce22/",
       demo: "https://ecommerce-channu22.vercel.app",
     },
-     {
+    {
       id: 2,
       title: "Movix",
       description:
         "Developed a dynamic Movix web app using React, Redux Toolkit, and Firebase. Full-featured platform with secure sign up/sign in and real-time movies from TMDB API.",
       image: "/Movix.png",
-      tech: ["TailwindCSS", "ReactJS","ReduxToolKit","FireBase",],
+      tech: ["TailwindCSS", "ReactJS", "ReduxToolKit", "FireBase"],
       category: "fullstack",
       github: "https://github.com/Channu-22/Movies_Project_22",
       demo: "https://movies-project-channu-22.vercel.app/",
@@ -115,7 +153,7 @@ export default function App() {
       description:
         "Developed a Leaderboard app with React.js, featuring real-time score updates, user ranking, and a responsive, interactive interface.",
       image: "/leaderBoard.png",
-      tech: ["React"],
+      tech: ["TailwindCSS", "React"],
       category: "fullstack",
       github: "https://github.com/Channu-22/leaderBoard_React",
       demo: "https://leader-board-react-channu22.vercel.app/",
@@ -137,7 +175,7 @@ export default function App() {
       description:
         "Designed a fully responsive restaurant website using Tailwind CSS, featuring hero section, chef showcase, styled menu, smooth navigation, and custom transitions.",
       image: "sinnur.png",
-      tech: ["HTML","tailwindCSS"],
+      tech: ["HTML", "tailwindCSS"],
       category: "fullstack",
       github: "https://github.com/Channu-22/sinnurRestaurant",
       demo: "https://sinnur-restaurant.vercel.app/",
@@ -148,7 +186,7 @@ export default function App() {
       description:
         "Built a Task Manager with dynamic UI using JavaScript, featuring add, edit, delete functionality and smart button state handling.",
       image: "/todoList.png",
-      tech: ["React",],
+      tech: ["React"],
       category: "ai",
       github: "https://github.com/Channu-22/simpleTodoList_projectInReact",
       demo: "https://simple-todo-list-project-in-react-c.vercel.app/",
@@ -163,13 +201,13 @@ export default function App() {
       github: "https://github.com/Channu-22/amazon_webScrapping",
       demo: "#",
     },
-      {
+    {
       id: 9,
       title: "myFirstProject",
       description:
         "Created a responsive multi-section layout using HTML and CSS featuring a navigation bar and content sections about Shivaji Maharaj, a traditional Indian woman, and the Vitthal Temple, with text and images arranged in a clean, visually appealing design.",
       image: "/first.png",
-      tech: ["HTML","CSS"],
+      tech: ["HTML", "CSS"],
       category: "ai",
       github: "https://github.com/Channu-22/simpleLayout1",
       demo: "https://simple-layout1-channu22.vercel.app/",
@@ -182,10 +220,7 @@ export default function App() {
       ? projects
       : projects.filter((project) => project.category === projectFilter);
 
-      
-const text = "Chanabasappa";
-
-
+  const text = "Chanabasappa";
 
   return (
     <div className="min-h-screen bg-slate-900 text-white overflow-x-hidden">
@@ -198,34 +233,33 @@ const text = "Chanabasappa";
       </div>
 
       {/* Navbar */}
-
       <motion.header
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-white/10"
         style={{ backgroundColor: `rgba(15, 23, 42, ${headerOpacity})` }}
       >
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-           <div className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text  flex gap-1">
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          animate={{
-            y: [0, -10, 0, 10, 0], // up -> center -> down -> center (wave)
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 2,
-            ease: "easeInOut",
-            delay: index * 0.1, // wave starts left to right
-          }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </div>
+            <div className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text flex gap-1">
+              {text.split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  animate={{
+                    y: [0, -10, 0, 10, 0],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 2,
+                    ease: "easeInOut",
+                    delay: index * 0.1,
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-8 cursor-pointer">
               {["home", "about", "skills", "projects", "contact"].map(
                 (item) => (
                   <button
@@ -333,9 +367,11 @@ const text = "Chanabasappa";
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-           "I have hands-on experience with Java, SQL, and the MERN stack, and I’m deeply driven by a strong interest in web development and emerging technologies. I’m actively seeking opportunities as a Software Engineer, SDE, or Web Developer where I can contribute and grow."
-
-
+            "I have hands-on experience with Java, SQL, and the MERN stack, and
+            I’m deeply driven by a strong interest in web development and
+            emerging technologies. I’m actively seeking opportunities as a
+            Software Engineer, SDE, or Web Developer where I can contribute and
+            grow."
           </motion.p>
 
           <motion.div
@@ -352,9 +388,8 @@ const text = "Chanabasappa";
             </button>
             <a
               href="/ChannuSinnur_B.tech.pdf"
-                download="Chanabasappa_Resume.pdf"
-
-              className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 bg-transparent" 
+              download="Chanabasappa_Resume.pdf"
+              className="border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 bg-transparent flex items-center justify-center"
             >
               <Download className="mr-2 h-4 w-4" />
               Download Resume
@@ -435,23 +470,22 @@ const text = "Chanabasappa";
               viewport={{ once: true }}
               className="space-y-6"
             >
-            <p className="text-lg text-gray-300 leading-relaxed">
-               I am fluent in programming languages like Java and SQL, with a strong interest in full-stack web development.
-               My passion lies in building modern web technologies and real-world applications that solve real problems.
-
-               On the frontend, I work with React.js to create interactive and responsive user interfaces.
-               On the backend, I build scalable APIs and server-side applications using Node.js, Express.js, and MongoDB.
-
-               I love turning ideas into working products and continuously strive to sharpen my skills in both frontend and backend development.
-           </p>
-
-              
+              <p className="text-lg text-gray-300 leading-relaxed">
+                I am fluent in programming languages like Java and SQL, with a
+                strong interest in full-stack web development. My passion lies
+                in building modern web technologies and real-world applications
+                that solve real problems. On the frontend, I work with React.js
+                to create interactive and responsive user interfaces. On the
+                backend, I build scalable APIs and server-side applications
+                using Node.js, Express.js, and MongoDB. I love turning ideas
+                into working products and continuously strive to sharpen my
+                skills in both frontend and backend development.
+              </p>
 
               <div className="grid grid-cols-2 gap-6 mt-8">
                 {[
                   { label: "Years Experience", value: "0" },
                   { label: "Projects Completed", value: "30+" },
-                  
                   { label: "Code Commits", value: "250+" },
                 ].map((stat, index) => (
                   <motion.div
@@ -490,47 +524,44 @@ const text = "Chanabasappa";
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full" />
           </motion.div>
 
-
           {/* Technology Icons */}
           <motion.div
-  className="mt-16 grid grid-cols-4 auto-rows-[120px] md:auto-rows-[150px] gap-4"
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  viewport={{ once: true }}
->
-  {[
-    { name: "Java", icon: JAVA, colSpan: 2, rowSpan: 2 },
-    { name: "SQL", icon: SQL, colSpan: 2, rowSpan: 2 },
-    { name: "HTML", icon: HTML, colSpan: 1, rowSpan: 1 },
-    { name: "CSS", icon: CSS, colSpan: 2, rowSpan: 2 },
-    { name: "Tailwind CSS", icon:CSS2, colSpan: 2, rowSpan: 1 },
-    { name: "JavaScript", icon: JAVASCRIPT, colSpan: 1, rowSpan: 1 },
-    { name: "React", icon: REACT, colSpan: 2, rowSpan: 1 },
-    { name: "Node", icon: NODE, colSpan: 2, rowSpan: 1 },
-    { name: "Express", icon: EXPRESS, colSpan: 2, rowSpan: 1 },
-    { name: "MongoDB", icon: MONGO, colSpan: 2, rowSpan: 1 },
-    { name: "Github", icon: GIT, colSpan: 2, rowSpan: 1 },
-    { name: "Postman", icon: POSTMAN, colSpan: 2, rowSpan: 1 },
-  ].map((tech, index) => (
-    <motion.div
-      key={tech.name}
-      className={`flex flex-col items-center justify-center p-4 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 group cursor-pointer
-        col-span-${tech.colSpan} row-span-${tech.rowSpan}`}
-      whileHover={{ scale: 1.05, y: -5 }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true }}
-    >
-      <tech.icon className="h-10 w-10 text-cyan-400 group-hover:text-purple-400 transition-colors mb-2" />
-      <span className="text-[20px] text-gray-300 group-hover:text-white transition-colors">
-        {tech.name}
-      </span>
-    </motion.div>
-  ))}
-</motion.div>
-
+            className="mt-16 grid grid-cols-4 auto-rows-[120px] md:auto-rows-[150px] gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {[
+              { name: "Java", icon: JAVA, colSpan: 2, rowSpan: 2 },
+              { name: "SQL", icon: SQL, colSpan: 2, rowSpan: 2 },
+              { name: "HTML", icon: HTML, colSpan: 1, rowSpan: 1 },
+              { name: "CSS", icon: CSS, colSpan: 2, rowSpan: 2 },
+              { name: "Tailwind CSS", icon: CSS2, colSpan: 2, rowSpan: 1 },
+              { name: "JavaScript", icon: JAVASCRIPT, colSpan: 1, rowSpan: 1 },
+              { name: "React", icon: REACT, colSpan: 2, rowSpan: 1 },
+              { name: "Node", icon: NODE, colSpan: 2, rowSpan: 1 },
+              { name: "Express", icon: EXPRESS, colSpan: 2, rowSpan: 1 },
+              { name: "MongoDB", icon: MONGO, colSpan: 2, rowSpan: 1 },
+              { name: "Github", icon: GIT, colSpan: 2, rowSpan: 1 },
+              { name: "Postman", icon: POSTMAN, colSpan: 2, rowSpan: 1 },
+            ].map((tech, index) => (
+              <motion.div
+                key={tech.name}
+                className={`flex flex-col items-center justify-center p-4 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 group cursor-pointer col-span-${tech.colSpan} row-span-${tech.rowSpan}`}
+                whileHover={{ scale: 1.05, y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <tech.icon className="h-10 w-10 text-cyan-400 group-hover:text-purple-400 transition-colors mb-2" />
+                <span className="text-[20px] text-gray-300 group-hover:text-white transition-colors">
+                  {tech.name}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -545,7 +576,7 @@ const text = "Chanabasappa";
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-             Featured Projects
+              Featured Projects
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full" />
           </motion.div>
@@ -572,21 +603,20 @@ const text = "Chanabasappa";
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex gap-2">
-                        <a href={project.demo}
-                          size="sm"
-                          
-                          target= "_blank"
-                          className="bg-cyan-500 hover:bg-cyan-600 py-1.5 px-4 rounded-2xl"
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-cyan-500 hover:bg-cyan-600 py-1.5 px-4 rounded-2xl flex items-center"
                         >
                           <ExternalLink className="h-4 w-4 mr-1" />
                           Demo
                         </a>
                         <a
-                        href={project.github}
-                          size="sm"
-                          target= "_blank"
-                          variant="outline"
-                         className="bg-cyan-500 hover:bg-cyan-600 py-1.5 px-4 rounded-2xl"
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-cyan-500 hover:bg-cyan-600 py-1.5 px-4 rounded-2xl flex items-center"
                         >
                           <Github className="h-4 w-4 mr-1" />
                           Git
@@ -660,18 +690,18 @@ const text = "Chanabasappa";
                       icon: Mail,
                       label: "Email",
                       value: "channusinnur22072002@gmail.com",
-                      href: "channusinnur22072002@gmail.com",
+                      href: "mailto:channusinnur22072002@gmail.com",
                     },
                     {
                       icon: Phone,
                       label: "Phone",
                       value: "+91 9322605251",
-                      href: "tel:+15551234567",
+                      href: "tel:+919322605251",
                     },
                     {
                       icon: MapPin,
                       label: "Location",
-                      value: "Solapur,Maharashtra,India",
+                      value: "Solapur, Maharashtra, India",
                       href: "#",
                     },
                   ].map((contact, index) => (
@@ -719,6 +749,8 @@ const text = "Chanabasappa";
                       <motion.a
                         key={social.label}
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="p-3 rounded-lg backdrop-blur-sm bg-white/5 border border-white/10 hover:border-cyan-400/50 text-gray-400 hover:text-cyan-400 transition-all duration-300"
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
@@ -743,53 +775,176 @@ const text = "Chanabasappa";
                 Send Message
               </h3>
 
-              <form className="space-y-6">
-                {/* Name and Email */}
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      className="w-full bg-slate-800/50 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:border-cyan-400 rounded-md px-4 py-2 transition-all"
-                    />
+              <div className="space-y-6">
+                {submitMessage && (
+                  <div
+                    className={`mb-6 p-4 rounded-xl text-center font-medium ${
+                      submitMessage.includes("successfully")
+                        ? "bg-emerald-900/30 text-emerald-400 border border-emerald-400/50"
+                        : "bg-red-900/30 text-red-400 border border-red-400/50"
+                    }`}
+                  >
+                    {submitMessage}
                   </div>
-                  <div>
-                    <input
-                      type="email"
-                      placeholder="Your Email"
-                      className="w-full bg-slate-800/50 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:border-cyan-400 rounded-md px-4 py-2 transition-all"
+                )}
+
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  {/* Name and Email */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="group">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-semibold text-gray-300 mb-2"
+                      >
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        {...register("name", {
+                          required: "Name is required",
+                          minLength: {
+                            value: 3,
+                            message: "Name must be at least 3 characters",
+                          },
+                        })}
+                        className={`w-full px-4 py-3 bg-slate-800/50 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:border-cyan-400 rounded-md transition-all duration-300 ${
+                          errors.name
+                            ? "border-red-400 bg-red-900/30"
+                            : "border-white/10 hover:border-cyan-400/50"
+                        }`}
+                        placeholder="Enter your full name"
+                      />
+                      {errors.name && (
+                        <p className="mt-2 text-sm text-red-400 font-medium">
+                          {errors.name.message}
+                        </p>
+                      )}
+                    </div>
+                    <div className="group">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-semibold text-gray-300 mb-2"
+                      >
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        {...register("email", {
+                          required: "Email is required",
+                          pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: "Invalid email address",
+                          },
+                        })}
+                        className={`w-full px-4 py-3 bg-slate-800/50 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:border-cyan-400 rounded-md transition-all duration-300 ${
+                          errors.email
+                            ? "border-red-400 bg-red-900/30"
+                            : "border-white/10 hover:border-cyan-400/50"
+                        }`}
+                        placeholder="Enter your email address"
+                      />
+                      {errors.email && (
+                        <p className="mt-2 text-sm text-red-400 font-medium">
+                          {errors.email.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div className="group">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-semibold text-gray-300 mb-2"
+                    >
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      rows="5"
+                      {...register("message", {
+                        required: "Message is required",
+                        minLength: {
+                          value: 10,
+                          message: "Message must be at least 10 characters",
+                        },
+                      })}
+                      className={`w-full px-4 py-3 bg-slate-800/50 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:border-cyan-400 rounded-md transition-all duration-300 resize-none ${
+                        errors.message
+                          ? "border-red-400 bg-red-900/30"
+                          : "border-white/10 hover:border-cyan-400/50"
+                      }`}
+                      placeholder="Tell us what's on your mind..."
                     />
+                    {errors.message && (
+                      <p className="mt-2 text-sm text-red-400 font-medium">
+                        {errors.message.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full py-3 px-6 rounded-lg font-semibold text-white transition-all duration-300 transform ${
+                      isSubmitting
+                        ? "bg-gray-600 cursor-not-allowed scale-95"
+                        : "bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 hover:scale-105"
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center space-x-3">
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Sending...</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center space-x-2">
+                        <span>Send Message</span>
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                          />
+                        </svg>
+                      </div>
+                    )}
+                  </button>
+                </form>
+
+                {/* Footer Message */}
+                <div className="mt-8 pt-6 border-t border-white/10 text-center">
+                  <div className="flex items-center justify-center space-x-2 text-gray-400">
+                    <svg
+                      className="w-5 h-5 text-cyan-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <p className="text-sm font-medium text-purple-400">
+                      Expect a reply within 24 hours
+                    </p>
                   </div>
                 </div>
-
-                {/* Subject */}
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full bg-slate-800/50 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:border-cyan-400 rounded-md px-4 py-2 transition-all"
-                />
-
-                {/* Message */}
-                <textarea
-                  placeholder="Your Message"
-                  rows="6"
-                  className="w-full bg-slate-800/50 border border-white/10 text-white placeholder:text-gray-400 focus:outline-none focus:border-cyan-400 rounded-md px-4 py-2 transition-all resize-none"
-                ></textarea>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Send Message
-                </button>
-              </form>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
-
-   
 
       {/* Back to Top Button */}
       <AnimatePresence>
