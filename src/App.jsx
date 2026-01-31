@@ -419,7 +419,7 @@ export default function App() {
               View Projects
             </button>
             <a
-              href="/ChannuSinnur_B.tech.pdf"
+              href="/Chanabasappa_B.tech.pdf"
               download="Chanabasappa_B.tech.pdf"
               className="border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 bg-transparent flex items-center justify-center"
             >
