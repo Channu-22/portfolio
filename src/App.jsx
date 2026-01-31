@@ -116,6 +116,38 @@ export default function App() {
   const projects = [
     {
       id: 1,
+      title: "Food Delivery–Frontend",
+      description:
+        "Built a responsive food delivery user interface using React and Tailwind CSS. Users can browse food items, view details, add items to the cart, manage quantities, and place orders. Implemented secure authentication with JWT, real-time cart updates, and Stripe payment integration for smooth checkout. Focused on clean UI, fast performance, and mobile-first design.",
+      image: "/foodDel.png",
+      tech: [
+        "TailwindCSS",
+        "ReactJS",
+        "Context API",
+        "NodeJS",
+        "ExpressJS",
+        "MongoDB",
+        "JWT",
+        "Stripe API",
+      ],
+      category: "fullstack",
+      github: "https://github.com/Channu-22/Food_Del_2026/",
+      demo: "https://food-del-channu-frontend.onrender.com/",
+    },
+
+    {
+      id: 2,
+      title: "Food Delivery-Admin Panel",
+      description:
+        "Developed an admin dashboard to manage the food delivery platform efficiently. Admins can add, update, and delete food items, manage categories, view user orders, and track order status. Implemented secure admin authentication and role-based access. Integrated backend APIs using Node.js and Express with MongoDB for real-time data management.",
+      image: "/admin.png",
+      tech: ["TailwindCSS", "ReactJS", "NodeJS", "ExpressJS", "MongoDB", "JWT"],
+      category: "fullstack",
+      github: "https://github.com/Channu-22/Food_Del_2026",
+      demo: "https://food-del-channu-adminpanel.onrender.com/",
+    },
+    {
+      id: 3,
       title: "Ecommerce",
       description:
         "Developed a dynamic e-commerce web app with firebase. Full-featured platform with signUp and signIn method.",
@@ -126,7 +158,7 @@ export default function App() {
       demo: "https://ecommerce-channu22.vercel.app",
     },
     {
-      id: 2,
+      id: 4,
       title: "Movies",
       description:
         "Developed a dynamic Movix web app using React, Redux Toolkit, and Firebase. Full-featured platform with secure sign up/sign in and real-time movies from TMDB API.",
@@ -137,29 +169,29 @@ export default function App() {
       demo: "https://movies-project-channu-22.vercel.app/",
     },
     {
-      id: 3,
+      id: 5,
       title: "pokemonUniverse",
       description:
         "Built PokémonUniverse, a responsive web app using HTML, CSS, JS with PokéAPI integration to fetch and display dynamic nested Pokémon data.",
       image: "/Pokemon.png",
       tech: ["HTML", "CSS", "JavaScript"],
-      category: "fullstack",
+      category: "frontend",
       github: "https://github.com/Channu-22/PokemonUniverse_Project",
       demo: "https://pokemon-universe-project-channu2002.vercel.app/",
     },
     {
-      id: 4,
+      id: 6,
       title: "LeaderBoard",
       description:
         "Developed a Leaderboard app with React.js, featuring real-time score updates, user ranking, and a responsive, interactive interface.",
       image: "/leaderBoard.png",
       tech: ["TailwindCSS", "React"],
-      category: "fullstack",
+      category: "frontend",
       github: "https://github.com/Channu-22/leaderBoard_React",
       demo: "https://leader-board-react-channu22.vercel.app/",
     },
     {
-      id: 5,
+      id: 7,
       title: "emojiList",
       description:
         "Created EmojiList, a fun web app using HTML, CSS, and JavaScript to search and display emojis with real-time filtering and meaning display.",
@@ -170,45 +202,45 @@ export default function App() {
       demo: "https://emojilist-peach.vercel.app/",
     },
     {
-      id: 6,
+      id: 8,
       title: "sinnurRestaurant",
       description:
         "Designed a fully responsive restaurant website using Tailwind CSS, featuring hero section, chef showcase, styled menu, smooth navigation, and custom transitions.",
       image: "sinnur.png",
       tech: ["HTML", "tailwindCSS"],
-      category: "fullstack",
+      category: "frontend",
       github: "https://github.com/Channu-22/sinnurRestaurant",
       demo: "https://sinnur-restaurant.vercel.app/",
     },
     {
-      id: 7,
+      id: 9,
       title: "TodoList",
       description:
         "Built a Task Manager with dynamic UI using JavaScript, featuring add, edit, delete functionality and smart button state handling.",
       image: "/todoList.png",
       tech: ["React"],
-      category: "ai",
+      category: "frontend",
       github: "https://github.com/Channu-22/simpleTodoList_projectInReact",
       demo: "https://simple-todo-list-project-in-react-c.vercel.app/",
     },
     {
-      id: 8,
+      id: 10,
       title: "amazon webScrapping",
       description:
         "Web scraped Amazon using Node.js to extract product data (brand, title, image, rating, price) and converted it into JSON and XLSX formats for analysis.",
       tech: ["NodeJS"],
-      category: "mobile",
+      category: "backend",
       github: "https://github.com/Channu-22/amazon_webScrapping",
       demo: "#",
     },
     {
-      id: 9,
+      id: 11,
       title: "myFirstProject",
       description:
         "Created a responsive multi-section layout using HTML and CSS featuring a navigation bar and content sections about Shivaji Maharaj, a traditional Indian woman, and the Vitthal Temple, with text and images arranged in a clean, visually appealing design.",
       image: "/first.png",
       tech: ["HTML", "CSS"],
-      category: "ai",
+      category: "frontend",
       github: "https://github.com/Channu-22/simpleLayout1",
       demo: "https://simple-layout1-channu22.vercel.app/",
     },
@@ -388,7 +420,7 @@ export default function App() {
             </button>
             <a
               href="/ChannuSinnur_B.tech.pdf"
-              download="Chanabasappa_Resume.pdf"
+              download="Chanabasappa_B.tech.pdf"
               className="border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 px-8 py-3 rounded-full transition-all duration-300 transform hover:scale-105 bg-transparent flex items-center justify-center"
             >
               <Download className="mr-2 h-4 w-4" />
@@ -539,9 +571,9 @@ export default function App() {
               { name: "CSS", icon: CSS, colSpan: 2, rowSpan: 2 },
               { name: "Tailwind CSS", icon: CSS2, colSpan: 2, rowSpan: 1 },
               { name: "JavaScript", icon: JAVASCRIPT, colSpan: 1, rowSpan: 1 },
-              { name: "React", icon: REACT, colSpan: 2, rowSpan: 1 },
-              { name: "Node", icon: NODE, colSpan: 2, rowSpan: 1 },
-              { name: "Express", icon: EXPRESS, colSpan: 2, rowSpan: 1 },
+              { name: "React JS", icon: REACT, colSpan: 2, rowSpan: 1 },
+              { name: "Node JS", icon: NODE, colSpan: 2, rowSpan: 1 },
+              { name: "Express JS", icon: EXPRESS, colSpan: 2, rowSpan: 1 },
               { name: "MongoDB", icon: MONGO, colSpan: 2, rowSpan: 1 },
               { name: "Github", icon: GIT, colSpan: 2, rowSpan: 1 },
               { name: "Postman", icon: POSTMAN, colSpan: 2, rowSpan: 1 },
